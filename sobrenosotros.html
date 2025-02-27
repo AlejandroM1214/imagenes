@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        window.onload = function() {
+            emailjs.init("oB1jg50zpHExVUYvh"); // Reemplaza con tu User ID de EmailJS
+
+            document.getElementById("formulario-sugerencias").addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                let nombre = document.getElementById("nombre").value;
+                let email = document.getElementById("email").value;
+                let mensaje = document.getElementById("mensaje").value;
+
+                emailjs.send("alejandromc", "template_d1qu7s8", {
+                    from_name: nombre, 
+                    from_email: email, 
+                    message: mensaje
+                }).then(function(response) {
+                    alert("Gracias por tu sugerencia! Nos pondremos en contacto pronto.");
+                    document.getElementById("formulario-sugerencias").reset();
+                }, function(error) {
+                    alert("Hubo un error al enviar tu mensaje. Inténtalo más tarde.");
+                    console.error("Error en el envío:", error);
+                });
+            });
+        };
+    </script>
+</head>
+<body>
+    <header class="encabezado">
+        <div class="logo">🌱</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="energiasrenovables.html">Energías Renovables</a></li>
+                <li><a href="tecnologiasverdes.html">Tecnologías Verdes</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="calculadoraenergia.html">Tu Impacto Energético</a></li>
+                <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="presentacion">
+        <div class="overlay"></div>
+        <div class="contenido-presentacion">
+            <h1 class="titulo-central">¿Quiénes Somos?</h1>
+        </div>
+    </section>
+
+    <main class="zona-informacion">
+        <section class="sobre-nosotros">
+            <img src="imagenes/trabajo1.jpg" alt="Equipo de trabajo" class="imagen-equipo">
+            <div class="texto-nosotros">
+                <h2>¿Qué Somos?</h2>
+                <p>Somos un equipo comprometido con la difusión y el impulso de energías renovables y tecnologías verdes...</p>
+            </div>
+        </section>
+
+        <section class="sobre-nosotros">
+            <div class="texto-nosotros">
+                <h2>Nuestro Objetivo</h2>
+                <p>Buscamos educar, inspirar y conectar a personas e instituciones con herramientas y conocimientos sobre energías renovables...</p>
+            </div>
+            <img src="imagenes/educar.jpg" alt="Nuestro objetivo" class="imagen-equipo">
+        </section>
+
+        <section class="sobre-nosotros">
+            <img src="imagenes/vision.jpg" alt="Nuestra visión" class="imagen-equipo">
+            <div class="texto-nosotros">
+                <h2>Nuestra Visión</h2>
+                <p>Visualizamos un mundo donde la energía limpia sea accesible para todos...</p>
+            </div>
+        </section>
+    </main>
+
+    <section class="formulario-contacto">
+        <h2>Envíanos tus sugerencias</h2>
+        <p>Queremos saber tu opinión. ¿Tienes alguna idea, pregunta o sugerencia? Escríbela aquí:</p>
+        <form id="formulario-sugerencias" class="formulario">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="mensaje">Tu duda o sugerencia:</label>
+            <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+
+            <button type="submit">Enviar Sugerencia</button>
+        </form>
+    </section>
+
+    <footer class="seccion-contacto">
+        <p>Teléfono: +57 301 768 2507</p>
+        <p>Medellín, 2025</p>
+        <p>Correo: alejandromontoyacastano51@gmail.com</p>
+    </footer>
+</body>
+</html>
